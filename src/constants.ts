@@ -1,0 +1,32 @@
+export const SELF_CLOSING_TAGS = new Set([
+	"area",
+	"base",
+	"br",
+	"col",
+	"embed",
+	"hr",
+	"img",
+	"input",
+	"link",
+	"meta",
+	"param",
+	"source",
+	"track",
+	"wbr",
+]);
+
+export const HTML_TO_REACT_ATTRS: Record<string, string> = {
+	class: "className",
+	for: "htmlFor",
+	tabindex: "tabIndex",
+	readonly: "readOnly",
+	maxlength: "maxLength",
+	cellpadding: "cellPadding",
+	cellspacing: "cellSpacing",
+	rowspan: "rowSpan",
+	colspan: "colSpan",
+	usemap: "useMap",
+	frameborder: "frameBorder",
+	contenteditable: "contentEditable",
+	crossorigin: "crossOrigin",
+};
