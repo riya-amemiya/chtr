@@ -35,7 +35,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "2.2.5",
 		"@types/bun": "1.2.23",
-		"@types/react": "19.1.15",
+		"@types/react": "19.2.2",
 		"@types/react-dom": "19.2.1",
 		"@vitejs/plugin-react": "^5.0.4",
 		"@vitest/browser": "^3.2.4",
@@ -44,7 +44,7 @@
 		"vitest-browser-react": "^1.0.1"
 	},
 	"dependencies": {
-		"react": "19.1.1",
+		"react": "19.2.0",
 		"react-dom": "19.2.0"
 	}
 }
