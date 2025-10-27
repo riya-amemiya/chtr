@@ -41,7 +41,7 @@
 		"@vitest/browser": "^3.2.4",
 		"playwright": "^1.55.1",
 		"typescript": "5.9.3",
-		"vitest-browser-react": "^1.0.1"
+		"vitest-browser-react": "^2.0.2"
 	},
 	"dependencies": {
 		"react": "19.2.0",
