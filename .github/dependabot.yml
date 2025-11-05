@@ -4,8 +4,14 @@
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
 version: 2
+
+multi-ecosystem-groups:
+  bun-dependencies:
+    schedule:
+      interval: "weekly"
+
 updates:
   - package-ecosystem: "bun"
     directory: "/"
-    schedule:
-      interval: "weekly"
+    patterns: ["*"]
+    multi-ecosystem-group: "bun-dependencies"
