@@ -4,6 +4,7 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
 	plugins: [react()],
 	test: {
+		include: ["tests/chtr.test.tsx"],
 		browser: {
 			enabled: true,
 			provider: "playwright",

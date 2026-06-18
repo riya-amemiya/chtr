@@ -14,8 +14,7 @@
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true,
-		"jsx": "react-jsx",
-		"types": ["@vitest/browser/providers/playwright"]
+		"jsx": "react-jsx"
 	},
 	"include": ["src/**/*"],
 	"exclude": ["node_modules", "dist"]

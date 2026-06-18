@@ -1,5 +1,5 @@
 import { createElement, type ReactElement } from "react";
-import { HTML_TO_REACT_ATTRS } from "./constants.js";
+import { HTML_BOOLEAN_ATTRIBUTES, HTML_TO_REACT_ATTRS } from "./constants.js";
 import type { ParsedNode } from "./types.js";
 import { parseStyle } from "./utils.js";
 
@@ -9,14 +9,13 @@ export function convertAttributesToProps(
 	const props: Record<string, unknown> = {};
 
 	for (const [key, value] of Object.entries(attributes)) {
-		const reactKey = HTML_TO_REACT_ATTRS[key.toLowerCase()] || key;
+		const lowerKey = key.toLowerCase();
+		const reactKey = HTML_TO_REACT_ATTRS[lowerKey] || key;
 
-		if (reactKey === "style" && typeof value === "string") {
+		if (reactKey === "style") {
 			props.style = parseStyle(value);
-		} else if (reactKey.startsWith("data-") || reactKey.startsWith("aria-")) {
-			props[reactKey] = value;
-		} else if (value === "" || value === key) {
-			props[reactKey] = true;
+		} else if (HTML_BOOLEAN_ATTRIBUTES.has(lowerKey)) {
+			props[reactKey] = value !== "false";
 		} else {
 			props[reactKey] = value;
 		}

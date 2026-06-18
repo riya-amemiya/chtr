@@ -20,10 +20,11 @@
 	"scripts": {
 		"build": "tsc",
 		"dev": "tsc --watch",
-		"test": "biome check .",
+		"test": "bun test tests/unit",
+		"check": "biome check .",
 		"lint": "biome check . --write",
 		"ci": "biome ci .",
-		"prepublishOnly": "npm run build",
+		"prepublishOnly": "bun run build",
 		"test:browser": "vitest"
 	},
 	"files": [
