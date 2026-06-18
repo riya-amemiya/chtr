@@ -3,9 +3,8 @@ import type { ParsedNode } from "./types.js";
 import { decodeEntities, parseAttributes } from "./utils.js";
 
 const TAG_REGEX =
-	/<(\/)?([\w-]+)([^>]*)>|([^<]+)|<!--[\s\S]*?-->|<!DOCTYPE[^>]*>/gi;
+	/<!--[\s\S]*?-->|<!DOCTYPE[^>]*>|<(\/)?([\w-]+)((?:[\s/][^>]*)?)>|([^<]+)/gi;
 
-/** Parses an HTML string into a tree of {@link ParsedNode}s. */
 export function parseHTML(html: string): ParsedNode[] {
 	const stack: ParsedNode[] = [];
 	const result: ParsedNode[] = [];
@@ -58,8 +57,6 @@ export function parseHTML(html: string): ParsedNode[] {
 					currentParent.children.push(node);
 				}
 
-				// Only a trailing slash closes a tag, so slashes inside attribute
-				// values such as href="/home" are not mistaken for self-closing.
 				const isSelfClosing =
 					SELF_CLOSING_TAGS.has(node.tagName ?? "") ||
 					(attrString ?? "").trimEnd().endsWith("/");
