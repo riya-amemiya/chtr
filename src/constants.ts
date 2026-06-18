@@ -1,5 +1,3 @@
-// Void elements that never have children and do not need a closing tag.
-// https://html.spec.whatwg.org/multipage/syntax.html#void-elements
 export const SELF_CLOSING_TAGS = new Set([
 	"area",
 	"base",
@@ -17,8 +15,6 @@ export const SELF_CLOSING_TAGS = new Set([
 	"wbr",
 ]);
 
-// HTML attribute names (lower-cased) mapped to their React prop equivalents.
-// Keys are kept lower-cased so lookups can normalise the source casing first.
 export const HTML_TO_REACT_ATTRS: Record<string, string> = {
 	"accept-charset": "acceptCharset",
 	accesskey: "accessKey",
@@ -79,9 +75,6 @@ export const HTML_TO_REACT_ATTRS: Record<string, string> = {
 	usemap: "useMap",
 };
 
-// HTML boolean attributes (lower-cased). When present they map to `true`,
-// regardless of their literal value, except for an explicit "false".
-// https://html.spec.whatwg.org/multipage/indices.html#attributes-3
 export const HTML_BOOLEAN_ATTRIBUTES = new Set([
 	"allowfullscreen",
 	"async",
@@ -110,8 +103,6 @@ export const HTML_BOOLEAN_ATTRIBUTES = new Set([
 	"selected",
 ]);
 
-// Named HTML character references decoded back to their literal characters.
-// Numeric references (&#NN; / &#xHH;) are handled programmatically.
 export const HTML_NAMED_ENTITIES: Record<string, string> = {
 	amp: "&",
 	apos: "'",

@@ -2,17 +2,10 @@ import { SELF_CLOSING_TAGS } from "./constants.js";
 import type { ParsedNode } from "./types.js";
 import { decodeEntities, parseAttributes } from "./utils.js";
 
-// Matches, in order: an opening/closing tag, a run of text, an HTML comment or
-// a doctype declaration. Comments and doctypes are captured so they can be
-// skipped instead of being mis-parsed as text.
 const TAG_REGEX =
 	/<(\/)?([\w-]+)([^>]*)>|([^<]+)|<!--[\s\S]*?-->|<!DOCTYPE[^>]*>/gi;
 
-/**
- * Parses an HTML string into a tree of {@link ParsedNode}s. Comments and
- * doctype declarations are ignored, and whitespace-only text between elements
- * is dropped.
- */
+/** Parses an HTML string into a tree of {@link ParsedNode}s. */
 export function parseHTML(html: string): ParsedNode[] {
 	const stack: ParsedNode[] = [];
 	const result: ParsedNode[] = [];
@@ -65,10 +58,8 @@ export function parseHTML(html: string): ParsedNode[] {
 					currentParent.children.push(node);
 				}
 
-				// A tag is self-closing when it is a known void element or when
-				// the attribute string ends with a slash (`<br/>`, `<x a="1"/>`).
-				// Checking only the trailing slash avoids false positives from
-				// slashes inside attribute values such as `href="/home"`.
+				// Only a trailing slash closes a tag, so slashes inside attribute
+				// values such as href="/home" are not mistaken for self-closing.
 				const isSelfClosing =
 					SELF_CLOSING_TAGS.has(node.tagName ?? "") ||
 					(attrString ?? "").trimEnd().endsWith("/");

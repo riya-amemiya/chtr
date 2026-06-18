@@ -3,8 +3,6 @@ import type { ReactElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { chtr } from "../../src/index.js";
 
-// `chtr` returns a single element, an array of elements or a fragment, all of
-// which `renderToStaticMarkup` accepts as a `ReactNode`.
 function render(html: string): string {
 	return renderToStaticMarkup(chtr(html) as ReactElement);
 }
@@ -74,7 +72,6 @@ describe("chtr self-closing and nesting", () => {
 
 describe("chtr entity handling", () => {
 	test("decoded ampersands are re-encoded on output", () => {
-		// `decodeEntities` turns `&amp;` into `&`; React re-encodes it as `&amp;`.
 		expect(render("<p>Tom &amp; Jerry</p>")).toBe("<p>Tom &amp; Jerry</p>");
 	});
 });

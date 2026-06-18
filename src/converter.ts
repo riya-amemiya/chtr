@@ -3,11 +3,7 @@ import { HTML_BOOLEAN_ATTRIBUTES, HTML_TO_REACT_ATTRS } from "./constants.js";
 import type { ParsedNode } from "./types.js";
 import { parseStyle } from "./utils.js";
 
-/**
- * Converts a map of HTML attributes into React props, normalising attribute
- * names (e.g. `class` -> `className`), parsing inline styles and turning
- * boolean attributes into real booleans.
- */
+/** Converts a map of HTML attributes into React props. */
 export function convertAttributesToProps(
 	attributes: Record<string, string>,
 ): Record<string, unknown> {
@@ -20,8 +16,6 @@ export function convertAttributesToProps(
 		if (reactKey === "style") {
 			props.style = parseStyle(value);
 		} else if (HTML_BOOLEAN_ATTRIBUTES.has(lowerKey)) {
-			// A boolean attribute is true whenever it is present, unless it is
-			// explicitly set to "false".
 			props[reactKey] = value !== "false";
 		} else {
 			props[reactKey] = value;
@@ -31,10 +25,7 @@ export function convertAttributesToProps(
 	return props;
 }
 
-/**
- * Recursively converts a {@link ParsedNode} into a React element, text string
- * or `null` (for empty text nodes). `index` is used as the React `key`.
- */
+/** Recursively converts a {@link ParsedNode} into a React element. */
 export function nodeToReactElement(
 	node: ParsedNode,
 	index: number,

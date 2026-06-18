@@ -1,21 +1,11 @@
 import type { CSSProperties } from "react";
 import { HTML_NAMED_ENTITIES } from "./constants.js";
 
-// Matches a single attribute. The name allows any character that cannot
-// terminate a name (whitespace, quotes, "=", "/", ">") so namespaced and
-// hyphenated names such as `xml:lang` or `data-id` are captured too.
 const ATTR_REGEX = /([^\s/>"'=]+)(?:=(?:"([^"]*)"|'([^']*)'|(\S+)))?/g;
-
-// Matches a named or numeric (decimal / hexadecimal) HTML character reference.
 const ENTITY_REGEX = /&(#[xX]?[0-9a-fA-F]+|[a-zA-Z][a-zA-Z0-9]*);/g;
-
-// Matches a CSS hyphenated segment used when converting to camelCase.
 const CSS_HYPHEN_REGEX = /-([a-z])/g;
 
-/**
- * Decodes HTML character references (named, decimal and hexadecimal) into the
- * characters they represent. Unknown references are left untouched.
- */
+/** Decodes named, decimal and hexadecimal HTML character references. */
 export function decodeEntities(input: string): string {
 	if (input.indexOf("&") === -1) {
 		return input;
@@ -43,10 +33,7 @@ export function decodeEntities(input: string): string {
 	});
 }
 
-/**
- * Parses the raw attribute string of an opening tag into a name/value map.
- * Attribute values have their HTML entities decoded.
- */
+/** Parses an opening tag's attribute string into a name/value map. */
 export function parseAttributes(attrString: string): Record<string, string> {
 	const attributes: Record<string, string> = {};
 
@@ -59,11 +46,7 @@ export function parseAttributes(attrString: string): Record<string, string> {
 	return attributes;
 }
 
-/**
- * Parses an inline `style` string into a React `CSSProperties` object,
- * converting hyphenated property names to camelCase while preserving CSS
- * custom properties (names beginning with `--`).
- */
+/** Parses an inline `style` string into a React `CSSProperties` object. */
 export function parseStyle(styleString: string): CSSProperties {
 	const style: Record<string, string> = {};
 	const declarations = styleString.split(";");
@@ -80,7 +63,6 @@ export function parseStyle(styleString: string): CSSProperties {
 			continue;
 		}
 
-		// CSS custom properties must keep their literal `--name` form.
 		const camelProperty = property.startsWith("--")
 			? property
 			: property.replace(CSS_HYPHEN_REGEX, (_, letter: string) =>
