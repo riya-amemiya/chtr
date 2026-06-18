@@ -4,6 +4,9 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
 	plugins: [react()],
 	test: {
+		// Browser tests live alongside the source; the fast `bun test` suite
+		// under tests/unit is intentionally excluded from this runner.
+		include: ["tests/chtr.test.tsx"],
 		browser: {
 			enabled: true,
 			provider: "playwright",
