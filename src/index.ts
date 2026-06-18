@@ -7,7 +7,6 @@ export { parseHTML } from "./parser.js";
 export type { ParsedNode } from "./types.js";
 export { decodeEntities, parseAttributes, parseStyle } from "./utils.js";
 
-/** Converts an HTML string into a React element, or a fragment of them. */
 export function chtr(html: string): ReactElement | ReactElement[] {
 	const nodes = parseHTML(html);
 

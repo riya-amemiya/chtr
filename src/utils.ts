@@ -5,7 +5,6 @@ const ATTR_REGEX = /([^\s/>"'=]+)(?:=(?:"([^"]*)"|'([^']*)'|(\S+)))?/g;
 const ENTITY_REGEX = /&(#[xX]?[0-9a-fA-F]+|[a-zA-Z][a-zA-Z0-9]*);/g;
 const CSS_HYPHEN_REGEX = /-([a-z])/g;
 
-/** Decodes named, decimal and hexadecimal HTML character references. */
 export function decodeEntities(input: string): string {
 	if (input.indexOf("&") === -1) {
 		return input;
@@ -33,7 +32,6 @@ export function decodeEntities(input: string): string {
 	});
 }
 
-/** Parses an opening tag's attribute string into a name/value map. */
 export function parseAttributes(attrString: string): Record<string, string> {
 	const attributes: Record<string, string> = {};
 
@@ -46,7 +44,6 @@ export function parseAttributes(attrString: string): Record<string, string> {
 	return attributes;
 }
 
-/** Parses an inline `style` string into a React `CSSProperties` object. */
 export function parseStyle(styleString: string): CSSProperties {
 	const style: Record<string, string> = {};
 	const declarations = styleString.split(";");

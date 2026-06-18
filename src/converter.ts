@@ -3,7 +3,6 @@ import { HTML_BOOLEAN_ATTRIBUTES, HTML_TO_REACT_ATTRS } from "./constants.js";
 import type { ParsedNode } from "./types.js";
 import { parseStyle } from "./utils.js";
 
-/** Converts a map of HTML attributes into React props. */
 export function convertAttributesToProps(
 	attributes: Record<string, string>,
 ): Record<string, unknown> {
@@ -25,7 +24,6 @@ export function convertAttributesToProps(
 	return props;
 }
 
-/** Recursively converts a {@link ParsedNode} into a React element. */
 export function nodeToReactElement(
 	node: ParsedNode,
 	index: number,
