@@ -1,6 +1,6 @@
 {
 	"name": "chtr",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"description": "chtr(convert html to react) is a tool that converts html to react code.",
 	"license": "MIT",
 	"type": "module",
