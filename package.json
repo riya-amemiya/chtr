@@ -21,9 +21,9 @@
 		"build": "tsc",
 		"dev": "tsc --watch",
 		"test": "bun test tests/unit",
-		"check": "biome check .",
-		"lint": "biome check . --write",
-		"ci": "biome ci .",
+		"check": "oxlint && oxfmt --check",
+		"lint": "oxlint --fix && oxfmt",
+		"ci": "oxlint && oxfmt --check",
 		"prepublishOnly": "bun run build",
 		"test:browser": "vitest"
 	},
@@ -34,12 +34,13 @@
 		"access": "public"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.15",
 		"@types/bun": "1.4.3",
 		"@types/react": "19.3.0",
 		"@types/react-dom": "19.3.0",
 		"@vitejs/plugin-react": "^6.0.2",
 		"@vitest/browser": "^5.0.1",
+		"oxfmt": "0.74.0",
+		"oxlint": "1.89.0",
 		"playwright": "^1.55.1",
 		"typescript": "7.0.2",
 		"vitest-browser-react": "^2.0.2"

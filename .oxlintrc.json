@@ -1,0 +1,17 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"plugins": ["typescript", "unicorn", "oxc"],
+	"categories": {
+		"correctness": "error"
+	},
+	"rules": {
+		"curly": "error",
+		"no-else-return": "error",
+		"no-lonely-if": "error",
+		"no-var": "error",
+		"unicorn/no-lonely-if": "error"
+	},
+	"env": {
+		"builtin": true
+	}
+}

@@ -40,7 +40,7 @@ Call `chtr` with an HTML string inside a React component and embed the result di
 import { chtr } from "chtr";
 
 function Box() {
-  return <div>{chtr('<div class="box">Hello</div>')}</div>;
+	return <div>{chtr('<div class="box">Hello</div>')}</div>;
 }
 ```
 
@@ -52,7 +52,7 @@ When the HTML has several top-level elements, they are returned together inside 
 import { chtr } from "chtr";
 
 function List() {
-  return <ul>{chtr("<li>One</li><li>Two</li>")}</ul>;
+	return <ul>{chtr("<li>One</li><li>Two</li>")}</ul>;
 }
 ```
 
@@ -94,7 +94,7 @@ Malformed or unclosed tags are handled leniently rather than rejected, so the re
 
 ## Development
 
-Install dependencies with `bun install`, then build the TypeScript sources with `bun run build`, which runs `tsc`. Use `bun run check` to run Biome's checks and `bun run ci` to run Biome in CI mode.
+Install dependencies with `bun install`, then build the TypeScript sources with `bun run build`, which runs `tsc`. Use `bun run check` to run oxlint and the oxfmt format check, and `bun run lint` to apply oxlint fixes and oxfmt formatting.
 
 ## Testing
 
